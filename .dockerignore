@@ -1,0 +1,13 @@
+Dockerfile
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+.idea
+.vscode
+venv
+.venv
+.devcontainer
+test
+.env
+reset_db.sh
