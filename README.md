@@ -63,7 +63,7 @@ CONTAINER=$(docker inspect --format="{{.Id}}" portal_postgres)
 python3.7 manage.py migrate reporting 0001_initial
 ```
 ### Load Dummy data
-Download database dump - [dump_08042020.sql](https://drive.google.com/file/d/1iOXLnCSzv-VpO11kBMzlvm7I_YuDmM1p/view?usp=sharing) (Request access, if needed)
+Download database dump - [dump_08042020.sql]
 
 ```
 docker cp /path/to/dump $CONTAINER:/
@@ -84,13 +84,14 @@ python3.7 manage.py runserver
 ### How to build the Docker Image
 ```
 docker build -t portal-admin:v0.1 .
-docker run --rm -d -p 8081:8000 portal-admin:v0.1
+<!-- docker run --rm -d -p 8081:8000 portal-admin:v0.1 -->
+docker run -it -e HOST_IP=localhost -p 8081:8000 -d portal-admin:v0.1 --network=host
 
 Open in browser http://localhost:8081 OR curl http://localhost:8081
 
 ```
 ### deployment on kubernetes cluster
-In ../dram/portal_deployment.yaml file, replace line number 22 i.e. image: PORTAL_IMAGE with the pushed portal docker image (that we have created earlier).
+In ./portal_deployment.yaml file, replace line number 22 i.e. image: PORTAL_IMAGE with the pushed portal docker image (that we have created earlier).
 Then:
 ```
 kubectl apply -f portal_deployment.yaml -n <NAMESPACE>
@@ -99,7 +100,8 @@ Open in browser http://<NODE-IP>:32324 OR curl http://<NODE-IP>:32324
 
 ```
 
-## Generating migrations
+## Accessing API documentation
 ```
-python manage.py migrate reporting
+Open in browser http://localhost:8000
+/api/docs
 ```

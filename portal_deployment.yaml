@@ -1,0 +1,63 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sda-portal-backend
+  labels:
+    app: sda-portal
+    module: backend
+spec:
+  selector:
+    matchLabels:
+      app: sda-portal
+      module: backend
+  template:
+    metadata:
+      labels:
+        app: sda-portal
+        module: backend
+    spec:
+      containers:
+        - name: portal-backend
+          image: portal-admin:v0.1
+          imagePullPolicy: Always
+          env:
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: portal-admin-secret
+                  key: admin-secret-key
+            - name: ALLOWED_HOSTS
+              value: "localhost,127.0.0.1,docker.for.mac.localhost,docker.for.win.localhost,host.docker.internal"
+            - name: DATABASE_NAME
+              value: "postgres"
+            - name: DATABASE_USER
+              value: "postgres"
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-app-secret
+                  key: password
+            - name: DATABASE_HOST
+              value: "app-postgres-postgresql.sda-portal.svc"
+            - name: CORS_ORIGIN_WHITELIST
+              value: CORS_ORIGIN_LIST
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sda-portal-backend-svc
+  labels:
+    app: sda-portal-backend-svc
+spec:
+  ports:
+  - nodePort: 32324
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: sda-portal
+    module: backend
+  type: NodePort
+

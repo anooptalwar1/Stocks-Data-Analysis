@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     "reporting",
     "rest_framework",
     "corsheaders",
-    "simple_history",
     "django_filters",
     # "drf_spectacular",
 ]
@@ -65,7 +64,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
-    "simple_history.middleware.HistoryRequestMiddleware",
 ]
 
 ROOT_URLCONF = "sda.urls"

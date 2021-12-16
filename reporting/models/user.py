@@ -9,7 +9,6 @@ class User(models.Model):
     active = models.BooleanField(default=True)
     username = models.TextField(db_index=True)
     password = models.CharField(max_length=100)
-    token = models.CharField(max_length=10000,null=True)
     
     def __init__(self, *args, **kwargs):
         self.permissions = kwargs.pop("permissions", [])
@@ -44,7 +43,6 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "username",
             "active",
-            "token",
             "permissions",
             "roles",
         ]

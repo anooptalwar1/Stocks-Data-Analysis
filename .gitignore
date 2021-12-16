@@ -1,3 +1,4 @@
 static
 *.sqlite3
 dump.sql
+*__pycache__/

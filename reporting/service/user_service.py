@@ -59,7 +59,7 @@ class UserService:
     def get_by_username(self, username):
         qs = User.objects.raw(
             """
-            SELECT users.id AS id, users.first_name, users.last_name, users.username, users.token, users.active,
+            SELECT users.id AS id, users.first_name, users.last_name, users.username, users.active,
                    r.code AS role_code, p.code AS permission_code
                 FROM users
                     LEFT JOIN user_roles ur on users.id = ur.user_id
@@ -84,7 +84,6 @@ class UserService:
                 "last_name": users_df["last_name"].values[0],
                 "username": users_df["username"].values[0],
                 "active": bool(users_df["active"].values[0]),
-                "token": users_df["token"].values[0],
                 "roles": users_df["role_code"].drop_duplicates().dropna().to_list(),
                 "permissions": users_df["permission_code"].drop_duplicates().dropna().to_list(),
             }
@@ -140,9 +139,9 @@ class UserService:
                             "username": user_df["username"].values[0],
                             "active": user_df["active"].values[0],
                             "roles": user_df["role_code"].drop_duplicates().dropna().to_list()
-                            .drop_duplicates()
-                            .dropna()
-                            .to_dict("records"),
+                            # .drop_duplicates()
+                            # .dropna()
+                            # .to_dict("records"),
                         }
                     )
                 )
