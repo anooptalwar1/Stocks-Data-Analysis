@@ -6,6 +6,7 @@ metadata:
   labels:
     app: sda-portal
     module: backend
+  namespace: sda-portal
 spec:
   selector:
     matchLabels:
@@ -20,7 +21,7 @@ spec:
       containers:
         - name: portal-backend
           image: portal-admin:v0.1
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             - name: SECRET_KEY
               valueFrom:
@@ -39,7 +40,8 @@ spec:
                   name: postgres-app-secret
                   key: password
             - name: DATABASE_HOST
-              value: "app-postgres-postgresql.sda-portal.svc"
+              # value: "app-postgres-postgresql.sda-portal.svc"
+              value: "localhost"
             - name: CORS_ORIGIN_WHITELIST
               value: CORS_ORIGIN_LIST
 
@@ -50,6 +52,7 @@ metadata:
   name: sda-portal-backend-svc
   labels:
     app: sda-portal-backend-svc
+  namespace: sda-portal
 spec:
   ports:
   - nodePort: 32324

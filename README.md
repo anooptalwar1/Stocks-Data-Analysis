@@ -27,7 +27,8 @@
 5. Run `python manage.py migrate reporting`
 
 6. Load Dummy Data
-    - Download database dump - [dump_08062020.sql] (Request access, if needed)
+    Not Required for fresh installation
+    - Download database dump - [dump.sql] (Request access, if needed)
 
     - Copy into your container.
         ```
@@ -36,10 +37,11 @@
 
     - Restore using pg_restore
         ```
-        docker exec -ti <container_id> pg_restore --dbname=postgres --schema=public --data-only --format=c --username=postgres --host=localhost --port=5432 --disable-triggers dump_oct9_2020.sql
+        docker exec -ti <container_id> pg_restore --dbname=postgres --schema=public --data-only --format=c --username=postgres --host=localhost --port=5432 --disable-triggers dump.sql
         ```
 
 7. Application requires authenticated access. 
+     - Two default users(admin, viewer) already added through migrations
      - Create your user in users table
      - Create Environment Variables: 
          - env: dev
@@ -63,14 +65,15 @@ CONTAINER=$(docker inspect --format="{{.Id}}" portal_postgres)
 python3.7 manage.py migrate reporting 0001_initial
 ```
 ### Load Dummy data
-Download database dump - [dump_08042020.sql]
+#### Not Required for fesh setup
+Download database dump - [dump.sql]
 
 ```
 docker cp /path/to/dump $CONTAINER:/
-docker exec -ti $CONTAINER pg_restore --dbname=postgres --schema=public --data-only --format=c --username=postgres --host=localhost --port=5432 dump_08042020.sql
+docker exec -ti $CONTAINER pg_restore --dbname=postgres --schema=public --data-only --format=c --username=postgres --host=localhost --port=5432 dump.sql
 ```
 
-### Finish DB migration
+### Finish DB migration run server
 ```
 python3.7 manage.py migrate reporting
 python3.7 manage.py runserver
@@ -85,7 +88,7 @@ python3.7 manage.py runserver
 ```
 docker build -t portal-admin:v0.1 .
 <!-- docker run --rm -d -p 8081:8000 portal-admin:v0.1 -->
-docker run -it -e HOST_IP=localhost -p 8081:8000 -d portal-admin:v0.1 --network=host
+docker run -it -e HOST_IP=localhost -p 8081:8000 -d portal-admin:v0.1
 
 Open in browser http://localhost:8081 OR curl http://localhost:8081
 
@@ -94,14 +97,29 @@ Open in browser http://localhost:8081 OR curl http://localhost:8081
 In ./portal_deployment.yaml file, replace line number 22 i.e. image: PORTAL_IMAGE with the pushed portal docker image (that we have created earlier).
 Then:
 ```
-kubectl apply -f portal_deployment.yaml -n <NAMESPACE>
+kubectl create -f kubernetes/
+<!-- kubectl apply -f portal_deployment.yaml -n <NAMESPACE> -->
 
 Open in browser http://<NODE-IP>:32324 OR curl http://<NODE-IP>:32324
 
 ```
 
-## Accessing API documentation
+## Accessing API's
 ```
+Import postman collection Pyconiq.postman_collection.json for postman
+
+Or
 Open in browser http://localhost:8000
-/api/docs
+for authentication login must be performed to api/reporting/login {"username": <username>,"password" : <password>}
+
+api/health
+api/reporting/ login
+api/reporting/ users
+api/reporting/ users/me
+api/reporting/ users/<user_id>
+api/reporting/ roles
+api/reporting/ stocks
+api/reporting/ stocks/<id>
+api/docs/openapi [name='openapi-schema']
+api/docs [name='redoc']
 ```

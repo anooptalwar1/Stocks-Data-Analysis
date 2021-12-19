@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "0f9ac27c-80bf-4b0d-8712-5470f96f50a9",
+		"name": "Pyconiq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Stock",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-CSRFTOKEN",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODg3MjgsImlhdCI6MTYzOTY4ODQyOH0.yY5HSVpw3EX7JNWF93O0bKZJLvQQ9-mqJiR-uleAK0k",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"payconniq\",\r\n\"current_price\" : \"400\",\r\n\"currency_id\": \"USD\",\r\n\"quantity\": \"640\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/stocks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"stocks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stock by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODg1MDAsImlhdCI6MTYzOTY4ODIwMH0.nw1yGW3S3KL9qguvRLaFfWIyOI20OBjPd4ckXjKejlM",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/stocks/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"stocks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Stocks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODg1MDAsImlhdCI6MTYzOTY4ODIwMH0.nw1yGW3S3KL9qguvRLaFfWIyOI20OBjPd4ckXjKejlM",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"id\": 1,\r\n        \"first_name\": \"admin\",\r\n        \"last_name\": \"admin\",\r\n        \"username\": \"admin\",\r\n        \"active\": true\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/stocks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"stocks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Stock",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk1Nzg1NzIsImlhdCI6MTYzOTU3ODI3Mn0.gYFtpEgYXkbv0GG-iGm8uwWScGfZVDe93QSDptZ1gMc",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"user\": {\r\n        \"id\": 1,\r\n        \"first_name\": \"admin\",\r\n        \"last_name\": \"admin\",\r\n        \"username\": \"admin\",\r\n        \"active\": true\r\n    },\r\n    \"name\": \"Amazon\",\r\n    \"current_price\": \"999\",\r\n    \"currency_id\": \"USD\",\r\n    \"quantity\": \"300\",\r\n    \"is_active\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/stocks/10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"stocks",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"admin\",\r\n\"password\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/reporting/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Stock",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODg4NzEsImlhdCI6MTYzOTY4ODU3MX0._mAnEYFSPndld5kFcKLIECfYy4zXry0_wRRilYRXVTg",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/stocks/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"stocks",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODkxMDYsImlhdCI6MTYzOTY4ODgwNn0.yxmyhxkoxEe0j4SHzzw6xziqgb43yePiDYaNKnZ1sUw",
+						"type": "text"
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/users",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODkxMDYsImlhdCI6MTYzOTY4ODgwNn0.yxmyhxkoxEe0j4SHzzw6xziqgb43yePiDYaNKnZ1sUw"
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"type": "text",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/users/me",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Roles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzk2ODk3MzUsImlhdCI6MTYzOTY4OTQzNX0.1MXkmfVnLQ4aY4cN5u9XMlkNNAmRj2tE5MVOinh4Dvk"
+					},
+					{
+						"key": "X-CSRFTOKEN",
+						"type": "text",
+						"value": "VOMETJSudUOrGw23kkxdTgf5qc2WXUhHMaJKUKFYs5Fa8i7mj7wKquGR493Ce8vy"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/reporting/roles",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"reporting",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
