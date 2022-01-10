@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "0f9ac27c-80bf-4b0d-8712-5470f96f50a9",
-		"name": "Pyconiq",
+		"name": "stocks",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
